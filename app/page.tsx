@@ -1,6 +1,6 @@
 import {getServerSession} from "next-auth";
 import {options} from "@/app/options";
-import {NavBar, UserAvatar} from "@/app/components";
+import {NavBar, Navigation, UserAvatar} from "@/app/components";
 
 
 export default async function Home() {
@@ -10,6 +10,7 @@ export default async function Home() {
     return (
         <main>
             {session ? <UserAvatar avatar={userImage || ""}/> : <NavBar/>}
+            <Navigation/>
         </main>
     )
 }
