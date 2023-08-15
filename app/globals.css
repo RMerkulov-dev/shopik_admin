@@ -26,3 +26,16 @@ a {
     margin-top: 20px;
     gap: 20px;
 }
+
+.dashboard_wraper-menu {
+    background-color: aliceblue;
+    border-radius: 10px;
+  
+}
+
+.dashboard_wraper-content {
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
