@@ -1,11 +1,13 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import {getServerSession} from "next-auth";
+import {options} from "@/app/options";
+import {NavBar, UserAvatar} from "@/app/components";
 
+export default async function Home() {
+    const session = await getServerSession(options)
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-
-    </main>
-  )
+    return (
+        <main>
+            {session ? <UserAvatar user={session.user?.name}/> : <NavBar/>}
+        </main>
+    )
 }
