@@ -2,7 +2,7 @@ import {mongooseConnect} from "@/lib/mongoose";
 import {Product} from "@/models/Product";
 import {NextResponse} from "next/server";
 
-export async function POST(req: any) {
+export async function POST(req: Request) {
     const body = await req.json();
     await mongooseConnect();
     const {title, description, price} = body;

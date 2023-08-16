@@ -4,8 +4,10 @@ import {Layout} from "@/app/components";
 import {Box, Button, TextField, Typography} from "@mui/material";
 import {Controller, FieldValues, useForm} from "react-hook-form";
 import {addNewProduct} from "@/helpers/addNewProduct";
+import {useRouter} from "next/navigation";
 
 const AddNewProduct = () => {
+    const router = useRouter()
     const {
         control,
         handleSubmit,
@@ -23,11 +25,11 @@ const AddNewProduct = () => {
         try {
             await addNewProduct(data);
             reset();
+            router.push('/products')
         } catch (error) {
             console.error("Error submitting form:", error);
         }
     };
-
 
     return (
         <Layout>
