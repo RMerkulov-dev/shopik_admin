@@ -3,6 +3,7 @@
 import {Layout} from "@/app/components";
 import {Box, Button, TextField, Typography} from "@mui/material";
 import {Controller, FieldValues, useForm} from "react-hook-form";
+import {addNewProduct} from "@/helpers/addNewProduct";
 
 const AddNewProduct = () => {
     const {
@@ -18,10 +19,15 @@ const AddNewProduct = () => {
         }
     })
 
-    const onSubmit = (data: FieldValues) => {
-        console.log(data)
-        reset()
-    }
+    const onSubmit = async (data: FieldValues) => {
+        try {
+            await addNewProduct(data);
+            reset();
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+    };
+
 
     return (
         <Layout>

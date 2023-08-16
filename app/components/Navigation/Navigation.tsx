@@ -11,7 +11,7 @@ import {FiSettings} from "react-icons/fi";
 const Navigation = () => {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    console.log(selectedIndex)
+    // console.log(selectedIndex)
     const handleListItemClick = (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         index: number
