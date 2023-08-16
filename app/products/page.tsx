@@ -33,7 +33,7 @@ const Products = () => {
                     <tr key={product._id}>
                         <td>{product.title}</td>
                         <td><Button variant="outlined" sx={{borderColor: "green", color: "green"}}>
-                            <Link href={'/products/edit' + product._id}>
+                            <Link href={`/products/${product._id}`}>
                                 <IconButton>
                                     <BiEdit/>
                                 </IconButton>
