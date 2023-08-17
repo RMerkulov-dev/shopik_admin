@@ -6,7 +6,7 @@ import {addNewProduct} from "@/helpers/addNewProduct";
 import {useRouter} from "next/navigation";
 import {EditedProduct} from "@/types";
 
-const EditProductForm = ({title: editTitle, description: editDescription, price: editPrice}: EditedProduct) => {
+const EditProductForm = ({title: editTitle, description: editDescription, price: editPrice, _id}: EditedProduct) => {
     const router = useRouter()
     const [title, setTitle] = useState(editTitle || '');
     const [description, setDescription] = useState(editDescription || '');
@@ -28,11 +28,16 @@ const EditProductForm = ({title: editTitle, description: editDescription, price:
             title, description, price
         }
         try {
-            await addNewProduct(data);
-            router.push('/products')
-            setTitle("");
-            setDescription("");
-            setPrice("");
+            if (_id) {
+                //update product
+            } else {
+                //create product
+                await addNewProduct(data);
+                setTitle("");
+                setDescription("");
+                setPrice("");
+                router.push('/products')
+            }
         } catch (error) {
             console.error("Error submitting form:", error);
         }

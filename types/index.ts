@@ -14,6 +14,7 @@ export interface EditPageProps {
 }
 
 export type EditedProduct = {
+    _id?: string;
     title: string;
     description: string;
     price: number;
