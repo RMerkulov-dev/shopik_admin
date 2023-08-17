@@ -1,36 +1,29 @@
 'use client'
 
 import {Layout} from "@/app/components";
-import axios from "axios";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {getEditedProduct} from "@/helpers/getEditedProduct";
+import {EditedProduct, EditPageProps} from "@/types";
 
-interface EditPageProps {
-    params: { productId: string }
-}
 
 const EditProductPage = ({params}: EditPageProps) => {
+    const [product, setProduct] = useState<EditedProduct>({
+        title: "",
+        description: "",
+        price: 0
+    });
     const {productId} = params
-    console.log(productId)
 
     useEffect(() => {
-        axios.get(`/api/product/${productId}`).then(res => console.log(res.data))
-    }, []);
-
-    // const getSingleProduct = async () => {
-    //     try {
-    //         const response = await axios.get(`/api/products/${productId}`)
-    //         return response.data;
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-    //
-    // console.log(getSingleProduct().then(res => console.log(res)))
+        getEditedProduct({productId}).then((res) => setProduct(res))
+    }, [productId]);
 
 
     return (
         <Layout>
-            EditProduct
+            <p>{product.title}</p>
+            <p>{product.description}</p>
+            <p>{product.price}</p>
         </Layout>
     );
 };

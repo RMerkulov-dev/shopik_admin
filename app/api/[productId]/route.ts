@@ -6,11 +6,16 @@ interface EditPageProps {
     productId: string
 }
 
-export async function GET(params: EditPageProps) {
+export async function GET(req: Request, {params}: { params: EditPageProps }) {
     await mongooseConnect();
     const {productId} = params
+    console.log(productId)
 
-    const editedProduct = await Product.findOne({productId})
+    if (!productId) {
+        return
+    }
+
+    const editedProduct = await Product.findOne({_id: productId})
 
     return NextResponse.json(editedProduct)
 }
