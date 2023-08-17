@@ -24,8 +24,10 @@ const EditProductPage = ({params}: EditPageProps) => {
     return (
         <Layout>
             <Typography variant="h5">Edit product</Typography>
-            {/*<ProductForm/>*/}
-            <EditProductForm {...productInfo}/>
+            {productInfo && (
+                <EditProductForm {...productInfo}/>
+            )}
+
         </Layout>
     );
 };
