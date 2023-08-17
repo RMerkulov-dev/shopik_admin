@@ -4,7 +4,8 @@ import {Layout} from "@/app/components";
 import {useEffect, useState} from "react";
 import {getEditedProduct} from "@/helpers/getEditedProduct";
 import {EditedProduct, EditPageProps} from "@/types";
-import ProductForm from "@/app/components/ProductForm";
+import EditProductForm from "@/app/components/EditProductForm";
+import {Typography} from "@mui/material";
 
 
 const EditProductPage = ({params}: EditPageProps) => {
@@ -22,10 +23,9 @@ const EditProductPage = ({params}: EditPageProps) => {
 
     return (
         <Layout>
-            <p>{productInfo.title}</p>
-            <p>{productInfo.description}</p>
-            <p>{productInfo.price}</p>
-            <ProductForm/>
+            <Typography variant="h5">Edit product</Typography>
+            {/*<ProductForm/>*/}
+            <EditProductForm {...productInfo}/>
         </Layout>
     );
 };
