@@ -9,7 +9,6 @@ interface EditPageProps {
 export async function GET(req: Request, {params}: { params: EditPageProps }) {
     await mongooseConnect();
     const {productId} = params
-    console.log(productId)
 
     if (!productId) {
         return
