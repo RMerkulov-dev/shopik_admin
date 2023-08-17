@@ -10,7 +10,7 @@ import {BiEdit} from "react-icons/bi";
 
 const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);
-    console.log(products)
+
 
     useEffect(() => {
         getAllProducts().then(res => setProducts(res))
