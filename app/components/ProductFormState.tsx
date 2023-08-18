@@ -9,6 +9,7 @@ import {updateProductById} from "@/services/updateProductById";
 import toast from "react-hot-toast";
 import {LuImageOff} from "react-icons/lu";
 import {BsUpload} from "react-icons/bs";
+import axios from "axios";
 
 //FIXME:
 const ProductFormState = ({
@@ -16,12 +17,13 @@ const ProductFormState = ({
                               description: editDescription,
                               price: editPrice,
                               _id,
-                              images = 2
+                              images: newImages
                           }: SingleProduct) => {
     const router = useRouter()
     const [title, setTitle] = useState(editTitle || '');
     const [description, setDescription] = useState(editDescription || '');
     const [price, setPrice] = useState(editPrice || '');
+    const [images, setImages] = useState(newImages || []);
 
 
     useEffect(() => {
@@ -58,6 +60,24 @@ const ProductFormState = ({
         }
     }
 
+    const uploadImages = async (e: React.FormEvent<HTMLInputElement>) => {
+        // @ts-ignore
+        const files = e.target?.files;
+        if (files?.length > 0) {
+
+            const data = new FormData();
+            for (const file of files) {
+                data.append('file', file);
+            }
+            const res = await axios.post('/api/upload', data);
+            // @ts-ignore
+            setImages(oldImages => {
+                // @ts-ignore
+                return [...oldImages, ...res.data.links];
+            });
+        }
+    }
+
 
     return (
         <>
@@ -77,7 +97,7 @@ const ProductFormState = ({
                         : (<label className="upload-wrapper">
                                 <BsUpload size={40} sx={{color: "gray"}}/>
                                 <div>Upload</div>
-                                <input type="file" className="hidden"/>
+                                <input type="file" onChange={uploadImages} className="hidden"/>
                             </label>
 
                         )}
