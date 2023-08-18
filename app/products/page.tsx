@@ -3,9 +3,10 @@ import {Layout} from "@/app/components";
 import {Button, IconButton} from "@mui/material";
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import {getAllProducts} from "@/helpers/getAllProducts";
+import {getAllProducts} from "@/services/getAllProducts";
 import {Product} from "@/types";
 import {BiEdit} from "react-icons/bi";
+import {LuDelete} from "react-icons/lu";
 
 
 const Products = () => {
@@ -32,14 +33,24 @@ const Products = () => {
                 {products.map(product => (
                     <tr key={product._id}>
                         <td>{product.title}</td>
-                        <td><Button variant="outlined" sx={{borderColor: "green", color: "green"}}>
-                            <Link href={`/products/${product._id}`}>
-                                <IconButton>
-                                    <BiEdit/>
-                                </IconButton>
-                                Edit
-                            </Link>
-                        </Button></td>
+                        <td className="table-btn-wrapper">
+                            <Button variant="outlined" sx={{borderColor: "green", color: "green"}}>
+                                <Link href={`/products/${product._id}`}>
+                                    <IconButton>
+                                        <BiEdit/>
+                                    </IconButton>
+                                    Edit
+                                </Link>
+                            </Button>
+                            <Button variant="outlined" sx={{borderColor: "red", color: "red"}}>
+                                <Link href={`/products/delete/${product._id}`}>
+                                    <IconButton>
+                                        <LuDelete/>
+                                    </IconButton>
+                                    Delete
+                                </Link>
+                            </Button>
+                        </td>
                     </tr>
                 ))}
                 </tbody>

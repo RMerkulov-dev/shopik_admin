@@ -2,7 +2,7 @@
 
 import {useRouter} from "next/navigation";
 import {Controller, FieldValues, useForm} from "react-hook-form";
-import {addNewProduct} from "@/helpers/addNewProduct";
+import {addNewProduct} from "@/services/addNewProduct";
 import {Box, Button, TextField, Typography} from "@mui/material";
 
 const ProductForm = () => {

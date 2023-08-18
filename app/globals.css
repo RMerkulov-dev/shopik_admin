@@ -7,6 +7,11 @@ a {
     color: black;
 }
 
+span {
+    color: #3f2b96;
+    font-weight: bold;
+}
+
 .avatar {
     display: flex;
     align-items: center;
@@ -53,4 +58,9 @@ thead td {
 
 tbody td {
     padding: 10px;
+}
+
+.table-btn-wrapper {
+    display: flex;
+    gap: 30px;
 }

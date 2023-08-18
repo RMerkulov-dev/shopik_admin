@@ -2,7 +2,7 @@
 
 import {Layout} from "@/app/components";
 import {useEffect, useState} from "react";
-import {getOneProdyctById} from "@/helpers/getOneProdyctById";
+import {getOneProdyctById} from "@/services/getOneProdyctById";
 import {EditPageProps, SingleProduct} from "@/types";
 import ProductFormState from "@/app/components/ProductFormState";
 import {Typography} from "@mui/material";

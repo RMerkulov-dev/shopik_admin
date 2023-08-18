@@ -2,10 +2,10 @@
 
 import {Box, Button, TextField} from "@mui/material";
 import React, {useEffect, useState} from "react";
-import {addNewProduct} from "@/helpers/addNewProduct";
+import {addNewProduct} from "@/services/addNewProduct";
 import {useRouter} from "next/navigation";
 import {SingleProduct} from "@/types";
-import {updateProductById} from "@/helpers/updateProductById";
+import {updateProductById} from "@/services/updateProductById";
 import toast from "react-hot-toast";
 
 const ProductFormState = ({title: editTitle, description: editDescription, price: editPrice, _id}: SingleProduct) => {

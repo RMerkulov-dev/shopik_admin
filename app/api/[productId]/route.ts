@@ -18,3 +18,15 @@ export async function GET(req: Request, {params}: { params: EditPageProps }) {
 
     return NextResponse.json(editedProduct)
 }
+
+export async function DELETE(req: Request, {params}: { params: EditPageProps }) {
+    await mongooseConnect();
+    const {productId} = params
+
+    if (!productId) {
+        return
+    }
+
+    const deletedProduct = await Product.deleteOne({_id: productId})
+    return NextResponse.json(deletedProduct)
+}
