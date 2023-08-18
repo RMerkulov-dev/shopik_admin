@@ -1,6 +1,6 @@
 'use client'
 
-import {Box, Button, TextField} from "@mui/material";
+import {Box, Button, TextField, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {addNewProduct} from "@/services/addNewProduct";
 import {useRouter} from "next/navigation";
@@ -51,16 +51,19 @@ const ProductFormState = ({title: editTitle, description: editDescription, price
 
 
     return (
-        <Box component="form" sx={{display: "flex", flexDirection: "column", gap: "20px", marginTop: "20px"}}
-             onSubmit={handleSubmit}>
-            <TextField id="edit_prod_name" name="title" value={title} label="Product name" variant="outlined"
-                       onChange={e => setTitle(e.target.value)}/>
-            <TextField id="edit_prod_desc" name="description" value={description} label="Product description"
-                       variant="outlined" onChange={e => setDescription(e.target.value)}/>
-            <TextField id="edit_prod_price" name="price" value={price} type="number" label="Price (in USD)"
-                       variant="outlined" onChange={e => setPrice(e.target.value)}/>
-            <Button type="submit" variant={"contained"}>Save</Button>
-        </Box>
+        <>
+            <Typography variant="h5">New product</Typography>
+            <Box component="form" sx={{display: "flex", flexDirection: "column", gap: "20px", marginTop: "20px"}}
+                 onSubmit={handleSubmit}>
+                <TextField id="edit_prod_name" name="title" value={title} label="Product name" variant="outlined"
+                           onChange={e => setTitle(e.target.value)}/>
+                <TextField id="edit_prod_desc" name="description" value={description} label="Product description"
+                           variant="outlined" onChange={e => setDescription(e.target.value)}/>
+                <TextField id="edit_prod_price" name="price" value={price} type="number" label="Price (in USD)"
+                           variant="outlined" onChange={e => setPrice(e.target.value)}/>
+                <Button type="submit" variant={"contained"}>Save</Button>
+            </Box>
+        </>
     );
 };
 

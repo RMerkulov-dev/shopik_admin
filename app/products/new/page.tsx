@@ -1,12 +1,14 @@
 'use client'
 
-import ProductForm from "@/app/components/ProductForm";
 import {Layout} from "@/app/components";
+import ProductFormState from "@/app/components/ProductFormState";
 
 const AddNewProduct = () => {
+
     return (
         <Layout>
-            <ProductForm/>
+            {/*@ts-ignore*/}
+            <ProductFormState/>
         </Layout>
     )
 
