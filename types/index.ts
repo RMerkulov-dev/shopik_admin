@@ -21,7 +21,12 @@ export type SingleProduct = {
     price: number | string;
 }
 
-interface UpdateProduct {
-    _id: string
-    updatedProduct: SingleProduct;
+
+export interface DeleteProduct {
+    productId: string
+    title: string
+}
+
+export interface EditSingleProduct {
+    productId: string
 }

@@ -33,7 +33,7 @@ const ProductFormState = ({title: editTitle, description: editDescription, price
             if (_id) {
                 //update product
                 await updateProductById(data, _id);
-                toast.success("The product was updated successfully")
+                toast.success(`${title} was updated successfully`)
                 router.push('/products')
             } else {
                 //create product

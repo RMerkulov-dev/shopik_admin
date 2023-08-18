@@ -1,10 +1,8 @@
 import axios from "axios";
+import {EditSingleProduct} from "@/types";
 
-interface EditPageProps {
-    productId: string
-}
 
-export const getOneProdyctById = async ({productId}: EditPageProps) => {
+export const getOneProdyctById = async ({productId}: EditSingleProduct) => {
 
     try {
         const response = await axios.get(`/api/${productId}`)

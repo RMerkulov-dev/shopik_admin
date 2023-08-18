@@ -1,10 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
+import {DeleteProduct} from "@/types";
 
-interface DeleteProduct {
-    productId: string
-    title: string
-}
 
 export const deleteSingleProduct = async ({productId, title}: DeleteProduct) => {
 

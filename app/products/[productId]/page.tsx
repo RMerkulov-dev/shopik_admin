@@ -16,6 +16,7 @@ const EditProductPage = ({params}: EditPageProps) => {
     });
     const {productId} = params
 
+
     useEffect(() => {
         getOneProdyctById({productId}).then((res) => setProductInfo(res))
     }, [productId]);
