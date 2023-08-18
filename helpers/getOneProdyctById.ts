@@ -4,7 +4,7 @@ interface EditPageProps {
     productId: string
 }
 
-export const getEditedProduct = async ({productId}: EditPageProps) => {
+export const getOneProdyctById = async ({productId}: EditPageProps) => {
 
     try {
         const response = await axios.get(`/api/${productId}`)

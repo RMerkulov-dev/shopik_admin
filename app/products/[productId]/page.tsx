@@ -2,14 +2,14 @@
 
 import {Layout} from "@/app/components";
 import {useEffect, useState} from "react";
-import {getEditedProduct} from "@/helpers/getEditedProduct";
-import {EditedProduct, EditPageProps} from "@/types";
-import EditProductForm from "@/app/components/EditProductForm";
+import {getOneProdyctById} from "@/helpers/getOneProdyctById";
+import {EditPageProps, SingleProduct} from "@/types";
+import ProductFormState from "@/app/components/ProductFormState";
 import {Typography} from "@mui/material";
 
 
 const EditProductPage = ({params}: EditPageProps) => {
-    const [productInfo, setProductInfo] = useState<EditedProduct>({
+    const [productInfo, setProductInfo] = useState<SingleProduct>({
         title: "",
         description: "",
         price: 0
@@ -17,7 +17,7 @@ const EditProductPage = ({params}: EditPageProps) => {
     const {productId} = params
 
     useEffect(() => {
-        getEditedProduct({productId}).then((res) => setProductInfo(res))
+        getOneProdyctById({productId}).then((res) => setProductInfo(res))
     }, [productId]);
 
 
@@ -25,7 +25,7 @@ const EditProductPage = ({params}: EditPageProps) => {
         <Layout>
             <Typography variant="h5">Edit product</Typography>
             {productInfo && (
-                <EditProductForm {...productInfo}/>
+                <ProductFormState {...productInfo}/>
             )}
 
         </Layout>

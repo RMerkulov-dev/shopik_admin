@@ -13,9 +13,15 @@ export interface EditPageProps {
     params: { productId: string }
 }
 
-export type EditedProduct = {
+
+export type SingleProduct = {
     _id?: string;
     title: string;
     description: string;
-    price: number;
+    price: number | string;
+}
+
+interface UpdateProduct {
+    _id: string
+    updatedProduct: SingleProduct;
 }

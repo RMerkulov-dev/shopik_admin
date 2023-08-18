@@ -4,9 +4,11 @@ import {Box, Button, TextField} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {addNewProduct} from "@/helpers/addNewProduct";
 import {useRouter} from "next/navigation";
-import {EditedProduct} from "@/types";
+import {SingleProduct} from "@/types";
+import {updateProductById} from "@/helpers/updateProductById";
+import toast from "react-hot-toast";
 
-const EditProductForm = ({title: editTitle, description: editDescription, price: editPrice, _id}: EditedProduct) => {
+const ProductFormState = ({title: editTitle, description: editDescription, price: editPrice, _id}: SingleProduct) => {
     const router = useRouter()
     const [title, setTitle] = useState(editTitle || '');
     const [description, setDescription] = useState(editDescription || '');
@@ -24,12 +26,15 @@ const EditProductForm = ({title: editTitle, description: editDescription, price:
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const data = {
+        const data: SingleProduct = {
             title, description, price
         }
         try {
             if (_id) {
                 //update product
+                await updateProductById(data, _id);
+                toast.success("The product was updated successfully")
+                router.push('/products')
             } else {
                 //create product
                 await addNewProduct(data);
@@ -40,6 +45,7 @@ const EditProductForm = ({title: editTitle, description: editDescription, price:
             }
         } catch (error) {
             console.error("Error submitting form:", error);
+            toast.error("Something went wrong")
         }
     }
 
@@ -58,5 +64,5 @@ const EditProductForm = ({title: editTitle, description: editDescription, price:
     );
 };
 
-export default EditProductForm;
+export default ProductFormState;
 
