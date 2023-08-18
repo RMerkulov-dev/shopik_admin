@@ -12,6 +12,10 @@ span {
     font-weight: bold;
 }
 
+.hidden {
+    display: none;
+}
+
 .avatar {
     display: flex;
     align-items: center;
@@ -63,4 +67,29 @@ tbody td {
 .table-btn-wrapper {
     display: flex;
     gap: 30px;
+}
+
+.icon-image {
+    color: gray;
+}
+
+.no-image-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: rgba(194, 193, 193, 0.51);
+    width: 50%;
+    border: 1px dotted gray;
+    padding: 10px;
+}
+
+.upload-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    background-color: rgba(194, 193, 193, 0.51);
+    padding: 20px;
+    border-radius: 5px;
+    width: 30%;
 }

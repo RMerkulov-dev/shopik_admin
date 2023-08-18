@@ -19,6 +19,7 @@ export type SingleProduct = {
     title: string;
     description: string;
     price: number | string;
+    images?: string
 }
 
 

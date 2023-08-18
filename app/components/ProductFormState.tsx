@@ -7,8 +7,17 @@ import {useRouter} from "next/navigation";
 import {SingleProduct} from "@/types";
 import {updateProductById} from "@/services/updateProductById";
 import toast from "react-hot-toast";
+import {LuImageOff} from "react-icons/lu";
+import {BsUpload} from "react-icons/bs";
 
-const ProductFormState = ({title: editTitle, description: editDescription, price: editPrice, _id}: SingleProduct) => {
+//FIXME:
+const ProductFormState = ({
+                              title: editTitle,
+                              description: editDescription,
+                              price: editPrice,
+                              _id,
+                              images = 2
+                          }: SingleProduct) => {
     const router = useRouter()
     const [title, setTitle] = useState(editTitle || '');
     const [description, setDescription] = useState(editDescription || '');
@@ -57,6 +66,22 @@ const ProductFormState = ({title: editTitle, description: editDescription, price
                  onSubmit={handleSubmit}>
                 <TextField id="edit_prod_name" name="title" value={title} label="Product name" variant="outlined"
                            onChange={e => setTitle(e.target.value)}/>
+                <Typography variant="h6">Images</Typography>
+                <div>
+
+                    {!images ? (
+                            <div className="no-image-wrapper">
+                                <LuImageOff size={40} className="icon-image"/>
+                                <p>No images added...</p>
+                            </div>)
+                        : (<label className="upload-wrapper">
+                                <BsUpload size={40} sx={{color: "gray"}}/>
+                                <div>Upload</div>
+                                <input type="file" className="hidden"/>
+                            </label>
+
+                        )}
+                </div>
                 <TextField id="edit_prod_desc" name="description" value={description} label="Product description"
                            variant="outlined" onChange={e => setDescription(e.target.value)}/>
                 <TextField id="edit_prod_price" name="price" value={price} type="number" label="Price (in USD)"
